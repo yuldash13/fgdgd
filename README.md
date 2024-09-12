@@ -1,1 +1,1 @@
-# Rustam's courses
+# Rustam-s-core
