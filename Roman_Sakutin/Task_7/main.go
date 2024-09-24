@@ -5,7 +5,9 @@ import "fmt"
 func main() {
 
 	var people int
-	minutes := 10
+
+	const waitingOnePeopleMinutes = 10
+	const hourScale = 60
 
 	var hour string
 
@@ -19,17 +21,17 @@ func main() {
 	fmt.Println("Сколько бабулек в очереди?")
 	fmt.Scan(&people)
 
-	waiting2 := people * minutes
-	waiting1 := waiting2 / 60
-	waiting := waiting2 % 60
+	totalWaitingTime := people * waitingOnePeopleMinutes
+	hoursAll := totalWaitingTime / hourScale
+	minutesRemaining := totalWaitingTime % hourScale
 
-	if waiting1 == 1 {
+	if hoursAll == 1 {
 		hour = hour1
-	} else if waiting1 > 1 && waiting1 < 5 {
+	} else if hoursAll > 1 && hoursAll < 5 {
 		hour = hour2
-	} else if waiting1 >= 5 || waiting1 == 0 {
+	} else if hoursAll >= 5 || hoursAll == 0 {
 		hour = hour3
 	}
 
-	fmt.Printf("Вам придется ждать: %d %s, %d %s.", waiting1, hour, waiting, minute)
+	fmt.Printf("Вам придется ждать: %d %s, %d %s.", hoursAll, hour, minutesRemaining, minute)
 }
